@@ -3,7 +3,7 @@ node{
     def dockerImage = "rampallidocker/nodeapp:${imgVersion}"
     stage('Source Checkout'){
         
-        git 'https://github.com/javahometech/node-app'
+        git 'https://github.com/rampallidocker/node-app'
     }
     
     
