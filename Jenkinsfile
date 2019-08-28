@@ -1,6 +1,6 @@
 node{
-    def imgVersion = UUID.randomUUID().toString()
-    def dockerImage = "rampallidocker/nodeapp-6pm:${imgVersion}"
+    //def imgVersion = UUID.randomUUID().toString()
+    //def dockerImage = "rampallidocker/nodeapp-6pm:${imgVersion}"
     stage('Source Checkout'){
         
         git 'https://github.com/javahometech/node-app'
@@ -8,7 +8,8 @@ node{
     
     
     stage('Build Docker Image'){
-        sh "docker build -t ${dockerImage} ."
+        //sh "docker build -t ${dockerImage} ."
+	  sh "docker build -t rampallidocker/nodeapp:1.1 ."
     }
     
     stage('Push DockerHub'){
@@ -16,11 +17,13 @@ node{
 			sh "docker login -u rampallidocker -p ${dockerhubPwd}"
 		}
         
-        sh "docker push ${dockerImage}"
+        //sh "docker push ${dockerImage}"
+	  sh "docker push rampallidocker/nodeapp:1.1"
     }
     
 	stage('Dev Deploy'){
-		def dockerRun = "docker run -d -p 8080:8080 --name nodeapp ${dockerImage}"
+		//def dockerRun = "docker run -d -p 9090:8080 --name nodeapp ${dockerImage}"
+		  def dockerRun = "docker run -d -p 9090:8080 --name nodeapp rampallidocker/nodeapp:1.1"
 		sshagent(['dev-docker']) {
 		    try{
 				sh "ssh -o StrictHostKeyChecking=no ubuntu@13.232.148.95 docker rm -f nodeapp "
