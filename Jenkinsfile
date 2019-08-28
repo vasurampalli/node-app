@@ -8,7 +8,8 @@ node{
     
     
     stage('Build Docker Image'){
-        //sh "docker build -t ${dockerImage} ."
+        //sh "docker build -t ${dockerImagerampallidocker"
+	  sh "sudo usermod -a -G docker $rampallidocker"
 	  sh "docker build -t rampallidocker/nodeapp:1.1 ."
     }
     
