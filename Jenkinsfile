@@ -1,6 +1,6 @@
 node{
-    //def imgVersion = UUID.randomUUID().toString()
-    //def dockerImage = "rampallidocker/nodeapp-6pm:${imgVersion}"
+    def imgVersion = UUID.randomUUID().toString()
+    def dockerImage = "rampallidocker/nodeapp:${imgVersion}"
     stage('Source Checkout'){
         
         git 'https://github.com/javahometech/node-app'
