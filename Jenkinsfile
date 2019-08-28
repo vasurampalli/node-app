@@ -10,7 +10,7 @@ node{
     stage('Build Docker Image'){
         //sh "docker build -t ${dockerImagerampallidocker"
 	  sh "sudo usermod -a -G docker $rampallidocker"
-	  sh "docker build -t rampallidocker/nodeapp:1.1 ."
+	  sh "sudo docker build -t rampallidocker/nodeapp:1.1 ."
     }
     
     stage('Push DockerHub'){
